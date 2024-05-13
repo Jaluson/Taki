@@ -5,9 +5,10 @@ const router = createRouter({
     routes: [
         {
             path: "/",
-            name: "Home",
-            component: () => import('../components/Test.vue')
+            name: "Login",
+            component: () => import('@/view/login.vue'),
         }]
+
 })
 
 export default router
