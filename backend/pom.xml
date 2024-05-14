@@ -24,6 +24,8 @@
         <module>gateway</module>
         <!--服务-->
         <module>business</module>
+        <!--Pojo-->
+        <module>entity</module>
     </modules>
 
     <build>
