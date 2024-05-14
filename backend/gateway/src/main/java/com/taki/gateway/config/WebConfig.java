@@ -1,7 +1,5 @@
 package com.taki.gateway.config;
 
-import org.springframework.cloud.gateway.filter.AdaptCachedBodyGlobalFilter;
-import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
@@ -20,10 +18,11 @@ public class WebConfig {
     PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
-    @Bean
-    GlobalFilter adaptCachedBodyGlobalFilter(){
-        return new AdaptCachedBodyGlobalFilter();
-    }
+
+    // @Bean
+    // GlobalFilter adaptCachedBodyGlobalFilter(){
+    //     return new AdaptCachedBodyGlobalFilter();
+    // }
 
     // CORS 配置源
     @Bean

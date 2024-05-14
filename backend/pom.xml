@@ -26,6 +26,8 @@
         <module>business</module>
         <!--Pojo-->
         <module>entity</module>
+        <!--工具-->
+        <module>utils</module>
     </modules>
 
     <build>
