@@ -22,6 +22,8 @@
         <module>app</module>
         <!--网关-->
         <module>gateway</module>
+        <!--服务-->
+        <module>business</module>
     </modules>
 
     <build>

@@ -1,0 +1,24 @@
+spring:
+  cloud:
+    nacos:
+      username: Taki
+      password: joestar
+      server-addr: 124.71.8.26:8848 # 主程地址 IP:PORT
+      discovery:
+        namespace: d270ac83-a33e-4785-a359-d504a26ab374 # 控制该服务所属命名空间命名空间
+      config:
+        file-extension: yaml # 文件后缀
+        prefix: gchm # 文件名
+        enable-remote-sync-config: true #同步远程方案
+        namespace: d270ac83-a33e-4785-a359-d504a26ab374 # 命名空间的DATA ID 配置该服务的配置文件所在命名空间
+        extension-configs:
+          - data-id: redis.yaml
+            refresh: true
+          - data-id: mysql.yaml
+            refresh: true
+          - data-id: mail.yaml
+            refresh: true
+          - data-id: jackson.yaml
+            refresh: true
+          - data-id: jwt.yaml # 包含公私密钥
+            refresh: true
