@@ -1,0 +1,35 @@
+server:
+  port: 9007
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      username: gachahime
+      password: gachahime
+      server-addr: 111.230.37.59:8848 # 主程地址 IP:PORT
+      discovery:
+        namespace: 2f4fb881-4e63-4ead-9b1a-600b0dddbff5 # 控制该服务所属命名空间
+      config:
+        file-extension: yaml # 文件后缀
+        prefix: gateway # 文件名
+        enable-remote-sync-config: true #同步远程方案
+        namespace: 2f4fb881-4e63-4ead-9b1a-600b0dddbff5 # 命名空间的DATA ID 配置该服务的配置文件所在命名空间
+#        extension-configs:
+#          - data-id: redis.yaml
+#            refresh: true
+#          - data-id: mysql.yaml
+#            refresh: true
+#          - data-id: mail.yaml
+#            refresh: true
+    gateway:
+      routes:
+        - id: gachahime
+          uri: lb://gachahime
+          predicates:
+            - Path=/gachahime/**
+management:
+  endpoint:
+    gateway:
+      enabled: true
+

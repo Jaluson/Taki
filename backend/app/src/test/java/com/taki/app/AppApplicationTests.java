@@ -1,10 +1,10 @@
-package com.taki.backend;
+package com.taki.app;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BackendApplicationTests {
+class AppApplicationTests {
 
     @Test
     void contextLoads() {
