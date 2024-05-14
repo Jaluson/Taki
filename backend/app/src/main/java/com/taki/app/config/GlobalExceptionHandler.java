@@ -10,12 +10,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RequestMapping
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
     @ExceptionHandler(Exception.class)
     ResponseEntity<Object> exception(Exception e) {
         e.printStackTrace();
         return ResponseEntity.ok("发现错误: " + e.getClass().getName());
     }
-
-
 }
