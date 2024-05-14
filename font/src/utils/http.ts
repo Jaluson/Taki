@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 // 创建自定义的 Axios 实例
 const customAxios: AxiosInstance = axios.create({
-    baseURL: 'http://127.0.0.1:9001/taki', // 设置基本的请求 URL
+    baseURL: 'http://127.0.0.1:9007/taki', // 设置基本的请求 URL
     timeout: 5000, // 设置请求超时时间
     headers: {
         'Content-Type': 'application/json', // 设置请求头

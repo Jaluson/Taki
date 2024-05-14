@@ -15,6 +15,7 @@
 <script setup lang="ts">
 
 import {reactive} from "vue";
+import http from "@/utils/http.ts";
 
 interface FormState {
   username: string;
@@ -29,6 +30,9 @@ const formState = reactive<FormState>({
 })
 
 const onFinish = (value: any) => {
+  http.post('/test/login',value).then(res => {
+    console.log('res:>>>', res)
+  })
   console.log('onFinish', value)
 }
 
