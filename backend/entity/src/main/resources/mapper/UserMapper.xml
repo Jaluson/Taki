@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taki.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.taki.entity.User">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="account" column="account" jdbcType="VARCHAR"/>
+            <result property="pwd" column="pwd" jdbcType="VARCHAR"/>
+            <result property="alias" column="alias" jdbcType="VARCHAR"/>
+            <result property="gender" column="gender" jdbcType="BIT"/>
+            <result property="address" column="address" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="lastLoginTime" column="last_login_time" jdbcType="TIMESTAMP"/>
+            <result property="registrationDate" column="registration_date" jdbcType="TIMESTAMP"/>
+            <result property="ban" column="ban" jdbcType="BIT"/>
+            <result property="unsubcribe" column="unsubcribe" jdbcType="BIT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,account,pwd,
+        alias,gender,address,
+        email,last_login_time,registration_date,
+        ban,unsubcribe
+    </sql>
+</mapper>
