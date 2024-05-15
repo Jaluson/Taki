@@ -1,4 +1,4 @@
-package com.taki.vo;
+package com.taki.vo.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

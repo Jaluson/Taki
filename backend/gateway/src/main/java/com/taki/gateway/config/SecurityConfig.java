@@ -32,7 +32,7 @@ public class SecurityConfig {
         security.csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(e ->
                         e.pathMatchers(HttpMethod.OPTIONS).permitAll()
-                                .pathMatchers("/taki/user/login").permitAll()
+                                .pathMatchers("/taki/user/**").permitAll()
                                 .anyExchange().authenticated())
                 .securityContextRepository(takiServerSecurityContextRepository)
                 .formLogin(formLoginSpec -> formLoginSpec.loginPage("/login")
