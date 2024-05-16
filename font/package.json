@@ -9,7 +9,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "ant-design-vue": "^4.2.1",
     "axios": "^1.6.8",
     "vue": "^3.4.21",
     "vue-router": "^4.3.2"
@@ -17,8 +16,11 @@
   "devDependencies": {
     "@types/node": "^20.12.11",
     "@vitejs/plugin-vue": "^5.0.4",
+    "naive-ui": "^2.38.2",
     "typescript": "^5.2.2",
+    "unplugin-auto-import": "^0.17.6",
     "unplugin-vue-components": "^0.27.0",
+    "vfonts": "^0.0.3",
     "vite": "^5.2.0",
     "vue-tsc": "^2.0.6"
   }
