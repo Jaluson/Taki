@@ -3,6 +3,7 @@ package com.taki.business.user;
 import com.taki.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.taki.vo.currency.R;
+import com.taki.vo.user.RegisterVo;
 
 /**
 * @author Akiki
@@ -18,5 +19,21 @@ public interface IUserService extends IService<User> {
      * @return 指定邮箱
      */
     R<Object> generatorVerifyCode(String email);
+
+    /**
+     * 校验验证码是否正确
+     *
+     * @param email 邮箱
+     * @param verificationCode 验证码
+     * @return true.正确 false.错误
+     */
+    boolean verifyCode(String email, String verificationCode);
+
+    /**
+     * 注册
+     * @param registerVo 注册对象
+     * @return true.成功 false.失败
+     */
+    boolean register(RegisterVo registerVo);
 
 }

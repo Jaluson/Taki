@@ -1,6 +1,7 @@
 package com.taki.business.user;
 
 import com.taki.entity.User;
+import com.taki.exceptions.ErrorVerifyException;
 import com.taki.vo.currency.R;
 import com.taki.vo.user.LoginVo;
 import com.taki.vo.user.RegisterVo;
@@ -33,7 +34,12 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<Object> register(@RequestBody RegisterVo registerVo) {
-
+        // todo 邀请码机制后续补上 先做验证码
+        if (!userService.verifyCode(registerVo.getEmail(), registerVo.getVerificationCode())) {
+            throw new ErrorVerifyException("验证码未通过!");
+        }
+        boolean flag = userService.register(registerVo);
+        
         return null;
     }
 
@@ -41,5 +47,6 @@ public class UserController {
     public R<Object> generatorVerifyCode(@RequestParam @Validated @Email(message = "邮箱格式错误") String email) {
         return userService.generatorVerifyCode(email);
     }
+
 
 }

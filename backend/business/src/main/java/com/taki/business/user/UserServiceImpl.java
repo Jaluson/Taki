@@ -1,17 +1,20 @@
 package com.taki.business.user;
 
+import cn.hutool.core.lang.UUID;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.taki.entity.User;
 import com.taki.mapper.UserMapper;
 import com.taki.utils.MailUtil;
 import com.taki.utils.Utils;
 import com.taki.vo.currency.R;
+import com.taki.vo.user.RegisterVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -45,8 +48,33 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         redisTemplate.opsForValue().set(email, code, CODE_TIMEOUT, CODE_TIME_UNIT);
         /// 2.发送验证码到指定邮箱
         SimpleMailMessage simpleMailMessage = mailUtil.normalMsg(email, SUBJECT, MODEL_STR.formatted(code, CODE_TIMEOUT));
+        // 发送
         mailSender.send(simpleMailMessage);
         return R.success();
+    }
+
+    @Override
+    public boolean verifyCode(String email, String verificationCode) {
+        /// 1.校验验证码
+        String code = (String) redisTemplate.opsForValue().get(email);
+        return code != null && code.equals(verificationCode);
+    }
+
+    @Override
+    public boolean register(RegisterVo registerVo) {
+        Date now = new Date();
+        User user = User.builder()
+                .account(registerVo.getUsername())
+                .pwd(registerVo.getPassword())
+                .ban(false)
+                .alias(UUID.randomUUID().toString())
+                .gender(true)
+                .address("")
+                .lastLoginTime(now)
+                .unsubcribe(false)
+                .registrationDate(now).build();
+        int insert = this.baseMapper.insert(user);
+        return insert > 0;
     }
 }
 
