@@ -2,6 +2,7 @@
 
 import {reactive, ref} from "vue";
 import {FormInst, FormItemRule, FormRules} from "naive-ui";
+import router from "@/router";
 
 interface FormState {
   username: string;
@@ -10,8 +11,8 @@ interface FormState {
   remember: boolean;
 }
 
-const isLogin = ref(true);
-const logging = ref(false);
+let isLogin = ref(true);
+let logging = ref(false);
 
 const formState = reactive<FormState>({
   username: '',
@@ -79,15 +80,21 @@ const isValidInput = (inputValue: string): boolean => {
 }
 
 const login = (): void => {
-
+  logging.value = true
   loginForm.value?.validate((errors: any) => {
     if (!errors) {
-      console.log(111)
+      // todo 校验通过
+
     } else {
-      console.log(errors)
-      console.log(222)
+      // todo 校验未通过
+
     }
-  })
+  }).finally(() => logging.value = false)
+}
+
+
+const register = (): void => {
+  router.push('/register')
 }
 
 </script>
@@ -106,14 +113,14 @@ const login = (): void => {
           <n-button strong round style="width: 100%;" :loading="logging" @click="login">登 录</n-button>
         </n-form-item>
         <n-form-item>
-          <n-button strong round size="tiny" text :loading="logging" @click="login">注册一个账号</n-button>
+          <n-button strong round size="tiny" text :loading="logging" @click="register">注册一个账号</n-button>
         </n-form-item>
       </n-form>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 
 
 .main-container {
